@@ -3,13 +3,19 @@ import * as core from '@actions/core'
 class GptOptions {
     static fromActionInputs(): GptOptions {
         const apiKey = core.getInput('api-key', { required: true })
+        const githubToken = core.getInput('github-token', { required: true })
         const reviewFocus = core.getInput('review-focus', { trimWhitespace: true }) as 'performance' | 'security' | 'syntax'
         const model = core.getInput('model', { trimWhitespace: true })
 
-        return new GptOptions(model, apiKey, reviewFocus)
+        return new GptOptions(model, apiKey, reviewFocus, githubToken)
     }
 
-    protected constructor(readonly model: string = 'gpt-3.5-turbo', readonly apiKey: string, readonly reviewFocus: 'performance' | 'security' | 'syntax') {}
+    protected constructor(
+        readonly model: string = 'gpt-3.5-turbo',
+        readonly apiKey: string,
+        readonly reviewFocus: 'performance' | 'security' | 'syntax',
+        readonly githubToken: string
+    ) {}
 }
 
 export const gptOptions = GptOptions.fromActionInputs()

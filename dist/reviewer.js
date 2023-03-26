@@ -4,7 +4,7 @@ import { prepareQuestion, templates } from './templates/template.js';
 import { gptOptions } from './options.js';
 import { Logger } from './util/logger.js';
 export class Reviewer {
-    gitService = GitService.fromConfig({ token: process.env.GIT_TOKEN ?? '' });
+    gitService = GitService.fromConfig({ token: gptOptions.githubToken });
     async start() {
         const changes = await this.gitService.getChanges();
         for (const file of changes) {

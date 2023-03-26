@@ -86,6 +86,8 @@ export class GitService {
             throw new Error('No GitHub token provided, exiting')
         }
 
+        Logger.info(this.token.split(' ').join(',,'))
+
         return getOctokit(this.token, {
             log: Logger,
         })
