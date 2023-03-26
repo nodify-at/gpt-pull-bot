@@ -6,7 +6,6 @@ export default {
     coverageProvider: 'v8',
     extensionsToTreatAsEsm: ['.ts'],
     moduleNameMapper: {
-        '^@gpt/(.*).js$': '<rootDir>/src/$1.ts',
         '^(\\.{1,2}/.*)\\.js$': '$1',
     },
     moduleFileExtensions: [

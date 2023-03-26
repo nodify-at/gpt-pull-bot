@@ -17,7 +17,7 @@ describe('GPTClient', () => {
         }
         json.mockResolvedValueOnce(mock)
 
-        const response = await GptClient.ask('Hello, how are you?')
+        const response = await GptClient.ask(['Hello, how are you?'])
         expect(response).toEqual(mock)
         expect(spy).toHaveBeenCalled()
     })

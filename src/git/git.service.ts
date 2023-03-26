@@ -1,7 +1,7 @@
-import { ChangedFiles } from '@gpt/git/types.js'
+import { ChangedFiles } from './types.js'
 import { context, getOctokit } from '@actions/github'
 import { RestEndpointMethodTypes } from '@octokit/rest'
-import { Logger } from '@gpt/util/logger.js'
+import { Logger } from '../util/logger.js'
 
 type GitServiceConfig = {
     token: string
@@ -26,7 +26,7 @@ export class GitService {
         }
 
         const files = await this.getChangedFiles(client, pullRequestNumber)
-        return this.getDifferences(client, pullRequestNumber, files)
+        return this.getDifferences(client, files)
     }
 
     async comment(message: string) {
@@ -47,25 +47,17 @@ export class GitService {
 
     private async getDifferences(
         { request }: ReturnType<typeof getOctokit>,
-        pullRequestNumber: number,
         files: RestEndpointMethodTypes['pulls']['listFiles']['response']['data']
     ): Promise<ChangedFiles> {
         const changedFiles: ChangedFiles = []
 
         for (const file of files) {
-            const diffUrl = `https://github.com/${context.repo.owner}/${context.repo.repo}/pull/${pullRequestNumber}/files#${file.filename}`
-            const diffResponse = await request(`GET ${diffUrl}`, {
-                headers: {
-                    Accept: 'application/vnd.github.diff',
-                },
-            })
-
-            const rawContent = await request(`GET ${file.raw_url}`)
-
+            const rawContent = await request(`GET ${file.contents_url}`)
+            const source = Buffer.from(rawContent.data.content, 'base64').toString('utf-8')
             changedFiles.push({
                 fileName: file.filename,
-                source: rawContent.data,
-                diff: diffResponse.data,
+                source,
+                diff: file.patch ?? '',
             })
         }
         return changedFiles
@@ -85,11 +77,8 @@ export class GitService {
         if (!this.token) {
             throw new Error('No GitHub token provided, exiting')
         }
-
-        Logger.info(this.token.split(' ').join(',,'))
-
         return getOctokit(this.token, {
-            log: Logger,
+            log: Logger
         })
     }
 }

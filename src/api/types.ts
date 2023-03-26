@@ -1,3 +1,8 @@
+export type ChatCompletionMessage = {
+    role: 'user' | 'system',
+    content: string
+}
+
 /**
  * The request to the GPT-3 API. This request contains the model to use and the messages to use as context.
  *
@@ -5,10 +10,7 @@
  */
 export type ChatCompletionRequest = {
     model: string,
-    messages: {
-        role: 'user',
-        content: string
-    }[]
+    messages: ChatCompletionMessage[]
 }
 
 /**
