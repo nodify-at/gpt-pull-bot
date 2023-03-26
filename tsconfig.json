@@ -34,7 +34,7 @@
     "useUnknownInCatchVariables": true,
 
     /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts" ,"jest.config.ts", "dist"]
 
