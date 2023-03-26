@@ -82,6 +82,10 @@ export class GitService {
     }
 
     private get client() {
+        if (!this.token) {
+            throw new Error('No GitHub token provided, exiting')
+        }
+
         return getOctokit(this.token, {
             log: Logger,
         })
