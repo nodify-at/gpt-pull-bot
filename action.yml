@@ -13,6 +13,6 @@ inputs:
         description: "Focus of the review"
         default: syntax
 runs:
-    using: 'node18'
+    using: 'node16'
     main:  "dist/index.js"
     pre: "npm install && npm run build"
