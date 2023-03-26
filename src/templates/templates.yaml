@@ -1,0 +1,24 @@
+version: 1.0
+description: Chat GPT question templates
+questions:
+  - question: |-
+      Act as a senior security engineer, can you give me review of this changes between source file and differences:
+      diff:
+      #diff-placeholder
+      source:
+      #source-placeholder
+    type: security
+  - question: |-
+      Act as a senior software engineer, can you give me review of this changes between source file and differences, is there a better way to do this:
+      diff:
+      #diff-placeholder
+      source:
+      #source-placeholder
+    type: syntax
+  - question: |-
+      Act as a senior software engineer, can you give me review of this changes between source file and differences if you find some performance issues:
+      diff:
+      #diff-placeholder
+      source:
+      #source-placeholder
+    type: performance

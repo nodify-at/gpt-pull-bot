@@ -1,0 +1,6 @@
+name: gpt-pull-bot
+description: A GitHub Action that automatically comments on pull requests using chat gpt-3
+author:  Hasan Ozdemir
+runs:
+    using: 'node18'
+    main:  "dist/index.js"

@@ -1,0 +1,7 @@
+dist
+src/coverage
+.idea
+coverage
+.env
+*.iml
+node_modules
