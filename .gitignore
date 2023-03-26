@@ -3,4 +3,3 @@ src/coverage
 coverage
 .env
 *.iml
-node_modules

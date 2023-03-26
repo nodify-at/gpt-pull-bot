@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "develop": "tsc -w",
-    "build": "tsc && tsc-alias",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "test": "jest"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "@types/yaml": "^1.9.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
+    "@vercel/ncc": "^0.36.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "eslint": "^8.36.0",
