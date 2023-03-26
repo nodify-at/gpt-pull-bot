@@ -13606,13 +13606,7 @@ function wrappy (fn, cb) {
 
 __nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 /* harmony import */ var _reviewer_js__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(2859);
-/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(5438);
-/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_github__WEBPACK_IMPORTED_MODULE_1__);
 
-
-_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request = {
-    number: 4,
-};
 const reviewer = new _reviewer_js__WEBPACK_IMPORTED_MODULE_0__/* .Reviewer */ .o();
 await reviewer.start();
 
