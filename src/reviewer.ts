@@ -5,7 +5,7 @@ import { gptOptions } from '@gpt/options.js'
 import { Logger } from '@gpt/util/logger.js'
 
 export class Reviewer {
-    private readonly gitService: GitService = GitService.fromConfig({ token: process.env.GITHUB_TOKEN ?? '' })
+    private readonly gitService: GitService = GitService.fromConfig({ token: process.env.GIT_TOKEN ?? '' })
 
     async start() {
         const changes = await this.gitService.getChanges()
