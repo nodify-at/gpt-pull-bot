@@ -1,6 +1,18 @@
 name: gpt-pull-bot
 description: A GitHub Action that automatically comments on pull requests using chat gpt-3
 author:  Hasan Ozdemir
+inputs:
+    api-key:
+        description: "API key for GPT-3"
+        required: true
+    model:
+        description: "GPT-3 model to use"
+        required: true
+        default: gpt-3.5-turbo
+    review-focus:
+        description: "Focus of the review"
+        default: syntax
 runs:
     using: 'node18'
     main:  "dist/index.js"
+    pre: "npm install && npm run build"
