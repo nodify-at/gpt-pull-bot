@@ -1,8 +1,8 @@
-version: 1.0
+version: 1.0.1
 description: Chat GPT question templates
 questions:
   - question: |-
-      Act as a senior security engineer, can you give me review of this changes between source file and differences:
+      As a senior security engineer, could you please review the changes made to the source files and identify any differences?
     type: security
   - question: |-
       As a senior software engineer, could you please review the changes made between the source files and highlight any differences? 

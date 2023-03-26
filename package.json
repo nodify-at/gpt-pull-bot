@@ -1,6 +1,6 @@
 {
   "name": "@nodify/gpt-pull-bot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "GPT Review Action is a GitHub action that allows users to easily integrate GPT-powered code reviews into their repositories. Leverage the power of GPT to automatically review your code, providing suggestions and improvements.",
   "main": "index.js",
