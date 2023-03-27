@@ -19558,13 +19558,17 @@ class GptOptions {
     reviewFocus;
     githubToken;
     static fromActionInputs() {
-        const apiKey = process.env.GPT_API_KEY ?? core.getInput('api-key', { required: true });
-        const githubToken = process.env.GITHUB_TOKEN ?? core.getInput('github-token', { required: true });
-        const reviewFocus = process.env.REVIEW_FOCUS ?? core.getInput('review-focus', { trimWhitespace: true });
-        const model = process.env.REVIEW_MODEL ?? core.getInput('model', { trimWhitespace: true });
+        const apiKey = process.env.GPT_API_KEY || this.readOption('api-key');
+        const githubToken = process.env.GITHUB_TOKEN || this.readOption('github-token');
+        const reviewFocus = process.env.REVIEW_FOCUS || this.readOption('review-focus', 'syntax');
+        const model = process.env.REVIEW_MODEL || this.readOption('model', 'gpt-3.5-turbo');
         return new GptOptions(model, apiKey, reviewFocus, githubToken);
     }
-    constructor(model = 'gpt-3.5-turbo', apiKey, reviewFocus = 'syntax', githubToken) {
+    static readOption(option, defaultValue = '') {
+        const required = typeof defaultValue === 'undefined' || defaultValue === '';
+        return core.getInput(option, { trimWhitespace: true, required }) || defaultValue;
+    }
+    constructor(model, apiKey, reviewFocus, githubToken) {
         this.model = model;
         this.apiKey = apiKey;
         this.reviewFocus = reviewFocus;
