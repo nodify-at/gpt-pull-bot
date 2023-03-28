@@ -36,7 +36,7 @@ repositories. Leverage the power of GPT to automatically review your code, provi
           uses: actions/checkout@v2
     
         - name: Run GPT Review Action
-          uses: nodify-at/gpt-pull-bot@1.0.3 # or main to get the latest version always
+          uses: nodify-at/gpt-pull-bot@1.0.3
           with:
             api-key: ${{ secrets.GPT_API_KEY }}
             github-token: ${{ secrets.GITHUB_TOKEN }}
